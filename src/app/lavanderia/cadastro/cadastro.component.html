@@ -1,1 +1,66 @@
-<p>cadastro works!</p>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cadastro Lavanderia</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+          <a class="navbar-brand" href="#">LOL-Lavanderia</a>
+          <button class="navbar-toggler" type="button">
+          </button>
+      </div>
+    </nav>
+
+    <div class="container">    
+      <div class="row">
+
+        <div class="card-login">
+          <div class="card">
+            <div class="card-header bg-success">
+              Cadastre-se
+            </div>
+            <div class="card-body">
+              <form action="conexao.ts" method="post">
+              <div class="form-group">
+                  <input name="nome" type="text" class="form-control" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                  <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail">
+                </div>
+                <div class="form-group">
+                  <input name="cpf" type="text" class="form-control" placeholder="Digite seu CPF">
+                </div>
+                <div class="form-group">
+                  <input name="endereco" type="text" class="form-control" placeholder="Digite seu endereço">
+                </div>
+                <div class="form-group">
+                  <input name="senha" type="password" class="form-control" placeholder="Digite sua senha">
+                </div>
+                <div class="form-group">
+                  <input name="confirmar_senha" type="password" class="form-control" placeholder="Confirme sua senha">
+                </div>
+
+                <button class="btn btn-lg btn-info btn-info" type="submit">Cadastrar</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer fixed-bottom mt-auto py-3 bg-light">
+      <div class="container text-center">
+          Copyright © 2023 | Matheus, Lucas e Murilo | Web2
+      </div>
+  </footer>
+  
+  </body>
+</html>

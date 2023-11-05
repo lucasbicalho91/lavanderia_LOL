@@ -3,20 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PaginaInicialComponent } from './lavanderia/pagina-inicial/pagina-inicial.component';
-import { LoginComponent } from './lavanderia/login/login.component';
-import { CadastroComponent } from './lavanderia/cadastro/cadastro.component';
+import { LavanderiaModule } from './lavanderia';
+import { ClienteModule } from './cliente/cliente.module';
+import { FuncionarioModule } from './funcionario/funcionario.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PaginaInicialComponent,
-    LoginComponent,
-    CadastroComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LavanderiaModule,
+    ClienteModule,
+    FuncionarioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
