@@ -4,6 +4,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { RouterModule } from '@angular/router';
+import { RodapeComponent } from './rodape/rodape.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     CadastroComponent,
     LoginComponent,
-    PaginaInicialComponent
+    PaginaInicialComponent,
+    RodapeComponent
   ],
   imports: [
     CommonModule,

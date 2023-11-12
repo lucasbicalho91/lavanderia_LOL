@@ -4,6 +4,7 @@ import { InicialClienteComponent } from './inicial-cliente/inicial-cliente.compo
 import { ConsultaPedidoClienteComponent } from './consulta-pedido-cliente/consulta-pedido-cliente.component';
 import { ListagemPedidosClienteComponent } from './listagem-pedidos-cliente/listagem-pedidos-cliente.component';
 import { NovoPedidoClienteComponent } from './novo-pedido-cliente/novo-pedido-cliente.component';
+import { LavanderiaModule } from '../lavanderia';
 
 
 
@@ -15,7 +16,8 @@ import { NovoPedidoClienteComponent } from './novo-pedido-cliente/novo-pedido-cl
     NovoPedidoClienteComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LavanderiaModule
   ]
 })
 export class ClienteModule { }
