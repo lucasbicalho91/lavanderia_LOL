@@ -5,7 +5,8 @@ import { ManutencaoFuncionariosComponent } from './manutencao-funcionarios/manut
 import { ManutencaoRoupasFuncionarioComponent } from './manutencao-roupas-funcionario/manutencao-roupas-funcionario.component';
 import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio-funcionario.component';
 import { VisualizacaoPedidosFuncionarioComponent } from './visualizacao-pedidos-funcionario/visualizacao-pedidos-funcionario.component';
-import { LavanderiaModule } from '../lavanderia';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared';
 
 
 
@@ -19,7 +20,8 @@ import { LavanderiaModule } from '../lavanderia';
   ],
   imports: [
     CommonModule,
-    LavanderiaModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class FuncionarioModule { }

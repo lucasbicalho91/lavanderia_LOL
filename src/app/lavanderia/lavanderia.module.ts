@@ -8,6 +8,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 
 
 
+
 @NgModule({
   declarations: [
     CadastroComponent,
