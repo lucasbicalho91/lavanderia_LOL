@@ -5,5 +5,6 @@ export class Funcionario {
     public cpf: string,
     public email: string,
     public senha:string,
-    public endereco:string) {}
+    public dataNascimento: Date,
+    public habilitada: boolean) {}
 }

@@ -32,9 +32,9 @@ export class ManutencaoRoupasFuncionarioComponent {
     index.habilitada = true;
   }
 
-  excluirLinha(obj: Roupa): void {
+  excluirLinha(obj: Roupa, index: number): void {
     if (obj !== null) {
-      this.roupas.splice(obj.idRoupa, 1);
+      this.roupas.splice(index, 1);
     }
   }
 

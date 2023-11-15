@@ -50,11 +50,11 @@
                         <th>Peça de Roupa</th>
                         <th>Preço</th>
                         <th>Prazo de Lavagem (Em dias)</th>
-                        <th>Ação</th> <!-- Adicionei a coluna "Ação" aqui -->
+                        <th>Ação</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let Roupa of roupas">
+                      <tr *ngFor="let Roupa of roupas; let i = index">
                         <td>
                           <input [(ngModel)]="Roupa.nomPecaRoupa" [disabled]="!Roupa.habilitada" />
                         </td>
@@ -65,9 +65,8 @@
                           <input [(ngModel)]="Roupa.prazoLavagemRoupa" [disabled]="!Roupa.habilitada" />
                         </td>
                         <td>
-                          <!-- Botões de Ação -->
                           <button class="btn btn-warning mr-2" (click)="selecionarLinha(Roupa)">Editar</button>
-                          <button class="btn btn-danger mr-2" (click)="excluirLinha(Roupa)">Excluir</button>
+                          <button class="btn btn-danger mr-2" (click)="excluirLinha(Roupa, i)">Excluir</button>
                           <button class="btn btn-success" (click)="salvarEdicao(Roupa)">Salvar</button>
                         </td>
                       </tr>
@@ -77,6 +76,11 @@
         </div>
     </div>
 
+   <footer class="footer fixed-bottom mt-auto py-3 bg-light">
+      <div class="container text-center">
+          Copyright © 2023 | Lucas, Matheus e Murilo | Web2
+      </div>
+   </footer>
     
 </body>
 
