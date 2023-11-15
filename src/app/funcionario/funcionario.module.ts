@@ -7,7 +7,7 @@ import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio
 import { VisualizacaoPedidosFuncionarioComponent } from './visualizacao-pedidos-funcionario/visualizacao-pedidos-funcionario.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { SharedModule } from '../shared';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class FuncionarioModule { }

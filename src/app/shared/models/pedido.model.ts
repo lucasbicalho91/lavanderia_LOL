@@ -1,9 +1,10 @@
 export class Pedido {
   constructor(
     public idPedido: number,
-    public dataPedido: Date,
-    public dataEstimativa: Date,
-    public dataColeta: Date,
-    public dataEntrega:Date,
-    public valor:number) {}
+    public dataPedido: string,
+    public dataEstimativa: string,
+    public dataColeta: string,
+    public dataEntrega: string,
+    public valor: number,
+    public statusPedido: string) {}
 }

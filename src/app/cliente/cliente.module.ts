@@ -5,7 +5,7 @@ import { ConsultaPedidoClienteComponent } from './consulta-pedido-cliente/consul
 import { ListagemPedidosClienteComponent } from './listagem-pedidos-cliente/listagem-pedidos-cliente.component';
 import { NovoPedidoClienteComponent } from './novo-pedido-cliente/novo-pedido-cliente.component';
 import { LavanderiaModule } from '../lavanderia';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { LavanderiaModule } from '../lavanderia';
   ],
   imports: [
     CommonModule,
-    LavanderiaModule
+    LavanderiaModule,
+    RouterModule
   ]
 })
 export class ClienteModule { }
