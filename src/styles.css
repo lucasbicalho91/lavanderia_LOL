@@ -80,6 +80,10 @@
   margin: 120px;
 }
 
+.botao-cancelar {
+  float: right;
+}
+
 .card-inicial {
   text-align: center;
 }
