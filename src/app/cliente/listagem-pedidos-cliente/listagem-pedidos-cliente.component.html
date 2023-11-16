@@ -40,7 +40,7 @@
                 <h2>Tabela de Pedidos</h2>
                 <div class="form-group">
                     <label for="statusFilter">Filtrar por Status:</label>
-                    <select class="form-control" id="statusFilter">
+                    <select class="form-control" id="statusFilter" [(ngModel)]="statusSelecionado">
                         <option value="">Todos</option>
                         <option value="Em Processo">Em Processo</option>
                         <option value="Aguardando Pagamento">Aguardando Pagamento</option>
@@ -60,24 +60,26 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let pedido of listarPedidos()">
+                        <tr *ngFor="let pedido of listarPedidos() | statusFilter: statusSelecionado">
                             <td> {{pedido.idPedido}} </td>
                             <td> {{pedido.statusPedido}} </td>
                             <td> R${{pedido.valor}} </td>
                             <td> {{pedido.dataPedido}}</td>
                             <td>
-                              <a href="#" title="Pagar" alt="Pagar" class="btn btn-xs btn-primary" 
-                              *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
-                              (click)="pagar($event, pedido)">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                                Pagar
-                              </a>
-                                <a href="#" title="Cancelar" alt="Cancelar" class="btn btn-xs btn-danger botao-cancelar"
+                                
+                            <button type="button" class="btn btn-xs btn-primary"
+                            *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
+                                (click)="pagar($event, pedido)">
+                              <i class="fa fa-eye" aria-hidden="true"></i>
+                              Pagar
+                            </button>  
+
+                                <button type="button" class="btn btn-xs btn-danger botao-cancelar"
                                 *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
                                 (click)="cancelar($event, pedido)">
                                   <i class="fa fa-times" aria-hidden="true"></i>
                                   Cancelar
-                                </a>
+                            </button>
                             </td>
                         </tr>
   

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InicialClienteComponent } from './inicial-cliente/inicial-cliente.component';
 import { ConsultaPedidoClienteComponent } from './consulta-pedido-cliente/consulta-pedido-cliente.component';
@@ -6,19 +7,23 @@ import { ListagemPedidosClienteComponent } from './listagem-pedidos-cliente/list
 import { NovoPedidoClienteComponent } from './novo-pedido-cliente/novo-pedido-cliente.component';
 import { LavanderiaModule } from '../lavanderia';
 import { RouterModule } from '@angular/router';
-
+import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
+import { ModalPedidoComponent } from './modal-pedido/modal-pedido.component';
 
 @NgModule({
   declarations: [
     InicialClienteComponent,
     ConsultaPedidoClienteComponent,
     ListagemPedidosClienteComponent,
-    NovoPedidoClienteComponent
+    NovoPedidoClienteComponent,
+    StatusFilterPipe,
+    ModalPedidoComponent,
   ],
   imports: [
     CommonModule,
     LavanderiaModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class ClienteModule { }
