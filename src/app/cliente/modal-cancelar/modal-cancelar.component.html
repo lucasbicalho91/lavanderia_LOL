@@ -1,14 +1,12 @@
 <div class="modal-header d-flex justify-content-center">
-  <h4 class="modal-title" id="modalLabel"> Detalhes do Pedido: </h4>
+  <h4 class="modal-title" id="modalLabel"> Deseja cancelar o pedido? </h4>
 </div>
 
 <div class="modal-body text-center">
   <div>
     <p>Valor Total: {{ pedido.valor }} </p>
-    <p> Confirma o pagamento do pedido ? </p>
-
     <button type="button" class="btn btn-xs btn-primary botao-confirmar"
-    (click)="pagar($event, pedido)">
+    (click)="cancelar($event, pedido)">
     <i class="fa fa-check" aria-hidden="true"></i>
     Sim
 </button>

@@ -9,6 +9,7 @@ import { LavanderiaModule } from '../lavanderia';
 import { RouterModule } from '@angular/router';
 import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
 import { ModalPedidoComponent } from './modal-pedido/modal-pedido.component';
+import { ModalCancelarComponent } from './modal-cancelar/modal-cancelar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ModalPedidoComponent } from './modal-pedido/modal-pedido.component';
     NovoPedidoClienteComponent,
     StatusFilterPipe,
     ModalPedidoComponent,
+    ModalCancelarComponent
   ],
   imports: [
     CommonModule,

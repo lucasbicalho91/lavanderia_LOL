@@ -84,6 +84,10 @@
   float: right;
 }
 
+.botao-confirmar {
+  margin-inline: 15px;
+}
+
 .card-inicial {
   text-align: center;
 }

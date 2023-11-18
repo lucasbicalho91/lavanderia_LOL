@@ -4,18 +4,18 @@ import { Pedido } from 'src/app/shared';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-modal-pedido',
-  templateUrl: './modal-pedido.component.html',
-  styleUrls: ['./modal-pedido.component.css']
+  selector: 'app-modal-cancelar',
+  templateUrl: './modal-cancelar.component.html',
+  styleUrls: ['./modal-cancelar.component.css']
 })
-export class ModalPedidoComponent {
+export class ModalCancelarComponent {
   @Input() pedido!: Pedido;
 
   constructor(public activeModal: NgbActiveModal) {}
 
-pagar($event: any, pedido: Pedido): void {
+cancelar($event: any, pedido: Pedido): void {
     $event.preventDefault();
-      pedido.statusPedido = "Concluído";
+      pedido.statusPedido = "Cancelado";
       this.activeModal.close();
   }
   

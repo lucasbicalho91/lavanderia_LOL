@@ -1,85 +1,83 @@
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">LOL-Lavanderia</a>
-            <button class="navbar-toggler" type="button">
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/cliente/consulta']">Consultar Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" [routerLink]="['/cliente/pedido/listagem']">Listar Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/cliente/pedido/novo']">Novo Pedido</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/']">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <div class="row">
-            <div class="container mt-5">
-                <h2>Tabela de Pedidos</h2>
-                <div class="form-group">
-                    <label for="statusFilter">Filtrar por Status:</label>
-                    <select class="form-control" id="statusFilter" [(ngModel)]="statusSelecionado">
-                        <option value="">Todos</option>
-                        <option value="Em Processo">Em Processo</option>
-                        <option value="Aguardando Pagamento">Aguardando Pagamento</option>
-                        <option value="Concluído">Concluído</option>
-                        <option value="Concluído">Cancelado</option>
-                    </select>
-                </div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Número do Pedido</th>
-                            <th>Status do Pedido</th>
-                            <th>Valor do Pedido</th>
-                            <th>Data do Pedido</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr *ngFor="let pedido of listarPedidos() | statusFilter: statusSelecionado">
-                            <td> {{pedido.idPedido}} </td>
-                            <td> {{pedido.statusPedido}} </td>
-                            <td> R${{pedido.valor}} </td>
-                            <td> {{pedido.dataPedido}}</td>
-                            <td>
-                                
-                            <button type="button" class="btn btn-xs btn-primary"
-                            *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
-                                (click)="abrirModalPedido(pedido)">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                              Pagar
-                            </button>  
-
-                                <button type="button" class="btn btn-xs btn-danger botao-cancelar"
-                                *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
-                                (click)="cancelar($event, pedido)">
-                                  <i class="fa fa-times" aria-hidden="true"></i>
-                                  Cancelar
-                            </button>
-                            </td>
-                        </tr>
-  
-                    </tbody>
-                </table>
-            </div>
+        <a class="navbar-brand" href="#">LOL-Lavanderia</a>
+        <button class="navbar-toggler" type="button">
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente/consulta']">Consultar Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/cliente/pedido/listagem']">Listar Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente/pedido/novo']">Novo Pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/']">Sair</a>
+                </li>
+            </ul>
         </div>
     </div>
-    <footer class="footer fixed-bottom mt-auto py-3 bg-light">
-        <div class="container text-center">
-            Copyright © 2023 | Matheus, Lucas e Murilo | Web2
-        </div>
-    </footer>
+</nav>
 
+<div class="container">
+    <div class="row">
+        <div class="container mt-5">
+            <h2>Tabela de Pedidos</h2>
+            <div class="form-group">
+                <label for="statusFilter">Filtrar por Status:</label>
+                <select class="form-control" id="statusFilter" [(ngModel)]="statusSelecionado">
+                    <option value="">Todos</option>
+                    <option value="Em Processo">Em Processo</option>
+                    <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Número do Pedido</th>
+                        <th>Status do Pedido</th>
+                        <th>Valor do Pedido</th>
+                        <th>Data do Pedido</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let pedido of listarPedidos() | statusFilter: statusSelecionado">
+                        <td> {{pedido.idPedido}} </td>
+                        <td> {{pedido.statusPedido}} </td>
+                        <td> R${{pedido.valor}} </td>
+                        <td> {{pedido.dataPedido}}</td>
+                        <td>
+
+                            <button type="button" class="btn btn-xs btn-primary"
+                                *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
+                                (click)="abrirModalPedido(pedido)">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                Pagar
+                            </button>
+
+                            <button type="button" class="btn btn-xs btn-danger botao-cancelar"
+                                *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
+                                (click)="abrirModalCancelar(pedido)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                Cancelar
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer class="footer fixed-bottom mt-auto py-3 bg-light">
+    <div class="container text-center">
+        Copyright © 2023 | Matheus, Lucas e Murilo | Web2
+    </div>
+</footer>

@@ -4,6 +4,8 @@ import { Pedido } from 'src/app/shared';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalPedidoComponent } from '../modal-pedido/modal-pedido.component';
 
+import { ModalCancelarComponent } from '../modal-cancelar/modal-cancelar.component';
+
 @Component({
   selector: 'app-listagem-pedidos-cliente',
   templateUrl: './listagem-pedidos-cliente.component.html',
@@ -35,15 +37,13 @@ export class ListagemPedidosClienteComponent {
     }
   }
 
-  pagar($event: any, pedido: Pedido): void {
-    $event.preventDefault();
-    if (confirm(`Confirma o pagamento do pedido 00${pedido.idPedido}?`)) {
-      pedido.statusPedido = "Concluído";
-    }
-  }
-
   abrirModalPedido(pedido: Pedido) {
     const modalRef = this.modalService.open(ModalPedidoComponent);
+    modalRef.componentInstance.pedido = pedido;
+  }
+
+  abrirModalCancelar(pedido: Pedido) {
+    const modalRef = this.modalService.open(ModalCancelarComponent);
     modalRef.componentInstance.pedido = pedido;
   }
 
