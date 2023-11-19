@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { RouterModule } from '@angular/router';
 import { RodapeComponent } from './rodape/rodape.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,9 @@ import { RodapeComponent } from './rodape/rodape.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LavanderiaModule { }

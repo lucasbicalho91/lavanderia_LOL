@@ -1,15 +1,3 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Cadastro Lavanderia</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    
-  </head>
-
-  <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
           <a class="navbar-brand" href="#">LOL-Lavanderia</a>
@@ -18,7 +6,7 @@
       </div>
     </nav>
 
-    <div class="container">    
+    <div class="container overflow-auto">    
       <div class="row">
 
         <div class="card-login">
@@ -27,27 +15,34 @@
               Cadastre-se
             </div>
             <div class="card-body">
-              <form action="conexao.ts" method="post">
+              <form #formCliente="ngForm">
               <div class="form-group">
-                  <input name="nome" type="text" class="form-control" placeholder="Digite seu nome">
+                  <input type="text" class="form-control" placeholder="Digite seu nome" [(ngModel)]="cliente.nomeCliente" name="nomeCliente" required>
                 </div>
                 <div class="form-group">
-                  <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail">
+                  <input  type="email" class="form-control" placeholder="Digite seu e-mail" [(ngModel)]="cliente.email" name="email" required>
                 </div>
                 <div class="form-group">
-                  <input name="cpf" type="text" class="form-control" placeholder="Digite seu CPF">
+                  <input  type="text" class="form-control" placeholder="Digite seu CPF" [(ngModel)]="cliente.cpf" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00" maxlength="14"
+                  minlength="11" required>
                 </div>
                 <div class="form-group">
-                  <input name="endereco" type="text" class="form-control" placeholder="Digite seu endereço">
+                  <input type="text" class="form-control" placeholder="Digite seu CEP" [(ngModel)]="cliente.cep" name="cep" required>
                 </div>
                 <div class="form-group">
-                  <input name="senha" type="password" class="form-control" placeholder="Digite sua senha">
+                  <input type="text" class="form-control" placeholder="Logradouro" [(ngModel)]="cliente.logradouro" name="logradouro" required>
                 </div>
                 <div class="form-group">
-                  <input name="confirmar_senha" type="password" class="form-control" placeholder="Confirme sua senha">
+                  <input type="text" class="form-control" placeholder="Bairro" [(ngModel)]="cliente.bairro" name="bairro" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Cidade" [(ngModel)]="cliente.cidade" name="cidade" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Digite sua senha" [(ngModel)]="cliente.senha" name="senha" required>
                 </div>
 
-                <button class="btn btn-lg btn-info btn-info" type="submit">Cadastrar</button>
+                <button class="btn btn-lg btn-info btn-info" type="submit" (click)="inserir()">Cadastrar</button>
               </form>
 
             </div>
@@ -61,6 +56,3 @@
           Copyright © 2023 | Matheus, Lucas e Murilo | Web2
       </div>
   </footer>
-  
-  </body>
-</html>
