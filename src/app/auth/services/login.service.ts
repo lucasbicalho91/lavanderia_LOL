@@ -27,10 +27,10 @@ export class LoginService {
   }
 
   login(login: Login): Observable<Usuario | null> {
-    let usu = new Usuario(1, "Murilo dos Santos", login.login, login.senha, "CLIENTE");
+    let usu = new Usuario(1, "Cliente", login.login, login.senha, "CLIENTE");
     if (login.login == login.senha) {
       if (login.login == "admin") {
-        usu = new Usuario (2, "Matheus Filipe", login.login, login.senha, "FUNCIONARIO");
+        usu = new Usuario (2, "Funcionário", login.login, login.senha, "FUNCIONARIO");
       }
       return of(usu);
     }
