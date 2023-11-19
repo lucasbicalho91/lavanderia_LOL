@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LavanderiaModule } from './lavanderia';
-import { ClienteModule } from './cliente/cliente.module';
-import { FuncionarioModule } from './funcionario/funcionario.module';
+import { ClienteModule } from './cliente';
+import { FuncionarioModule } from './funcionario';
 import { AuthModule } from './auth/auth.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

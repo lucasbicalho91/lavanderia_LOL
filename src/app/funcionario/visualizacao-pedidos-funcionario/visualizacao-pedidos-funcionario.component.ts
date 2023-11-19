@@ -32,7 +32,7 @@ export class VisualizacaoPedidosFuncionarioComponent {
     return this.pedidos;
   }
 
-  getStatusClass(statusPedido: string): string {
+  getStatusClass(statusPedido: string | undefined): string {
     switch (statusPedido) {
         case 'Em Aberto':
             return 'bg-warning';
@@ -51,7 +51,7 @@ export class VisualizacaoPedidosFuncionarioComponent {
     }
 }
 
-getBotaoTexto(statusPedido: string): string {
+getBotaoTexto(statusPedido: string | undefined): string {
   switch (statusPedido) {
       case 'Em Aberto':
           return 'Confirmar Recolhimento';
@@ -64,9 +64,9 @@ getBotaoTexto(statusPedido: string): string {
   }
 }
 
-mostrarBotao(statusPedido: string): boolean {
+mostrarBotao(statusPedido: string | undefined): boolean {
   const statusComBotao = ['Em Aberto', 'Recolhido', 'Pago'];
-    return statusComBotao.includes(statusPedido);
+    return statusPedido !== undefined && statusComBotao.includes(statusPedido);
 }
 
 efetuarAcao(nomeFuncao: string, pedido: any): void {
@@ -80,7 +80,6 @@ efetuarAcao(nomeFuncao: string, pedido: any): void {
       case 'Finalizar Pedido':
           this.finalizarPedido(pedido);
           break;
-      // Adicione mais casos conforme necessário
   }
 }
 

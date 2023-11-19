@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { DateUtil } from "src/app/utilities/date.utilitiy";
 
 @Pipe({ 
-  name: 'dateFormat'
+  name: 'dateFormatFunc'
 })
-export class DateFormatPipe implements PipeTransform {
+export class DateFormatFuncionarioPipe implements PipeTransform {
   
   transform(value: Date, ...args: string[]) {
     return DateUtil.Format(value, args[0]);

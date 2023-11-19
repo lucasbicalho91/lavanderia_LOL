@@ -12,7 +12,7 @@ import { ModalCancelarComponent } from './modal-cancelar/modal-cancelar.componen
 import { LavanderiaModule } from '../lavanderia';
 import { RouterModule } from '@angular/router';
 import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
-import { SharedModule } from '../shared';
+import { DateFormatClientePipe } from '../shared/pipes/date-format-cliente.pipe';
 
 @NgModule({
   declarations: [
@@ -20,16 +20,16 @@ import { SharedModule } from '../shared';
     ConsultaPedidoClienteComponent,
     ListagemPedidosClienteComponent,
     NovoPedidoClienteComponent,
-    StatusFilterPipe,
     ModalPedidoComponent,
-    ModalCancelarComponent
+    ModalCancelarComponent,
+    StatusFilterPipe,
+    DateFormatClientePipe
   ],
   imports: [
     CommonModule,
     LavanderiaModule,
     RouterModule,
     FormsModule,
-    SharedModule
   ]
 })
 export class ClienteModule { }

@@ -6,9 +6,8 @@ import { ManutencaoRoupasFuncionarioComponent } from './manutencao-roupas-funcio
 import { RelatorioFuncionarioComponent } from './relatorio-funcionario/relatorio-funcionario.component';
 import { VisualizacaoPedidosFuncionarioComponent } from './visualizacao-pedidos-funcionario/visualizacao-pedidos-funcionario.component';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared';
 import { RouterModule } from '@angular/router';
-
+import { DateFormatFuncionarioPipe } from '../shared/pipes/date-format-funcionario.pipe';
 
 @NgModule({
   declarations: [
@@ -16,12 +15,12 @@ import { RouterModule } from '@angular/router';
     ManutencaoFuncionariosComponent,
     ManutencaoRoupasFuncionarioComponent,
     RelatorioFuncionarioComponent,
-    VisualizacaoPedidosFuncionarioComponent
+    VisualizacaoPedidosFuncionarioComponent,
+    DateFormatFuncionarioPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule,
     RouterModule
   ]
 })
