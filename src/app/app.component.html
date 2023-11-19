@@ -1,1 +1,112 @@
-<router-outlet></router-outlet>
+
+<div class="container-fluid">
+
+    <div *ngIf="usuarioLogado" class="navbar-collapse collapsed justify-content-between"id="navbarContent">
+
+      <nav class="navbar navbar-expand-md n navbar-dark bg-dark">
+
+        <a class="navbar-brand nav-link" href="#">
+          <i class="fa fa-user-edit"> {{ title }} </i>
+        </a>
+      
+      <ul class="navbar-nav mr-auto">
+        
+        <li *ngIf="usuarioLogado.perfil==='CLIENTE'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cliente"> Página Inicial </a>
+        </li>
+        
+        <li *ngIf="usuarioLogado.perfil==='CLIENTE'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cliente/pedido/novo"> Novo Pedido </a>
+        </li>
+
+        <li *ngIf="usuarioLogado.perfil==='CLIENTE'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cliente/consulta"> Consultar Pedidos </a>
+        </li>
+
+        <li *ngIf="usuarioLogado.perfil==='CLIENTE'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cliente/pedido/listagem"> Listagem de Pedidos </a>
+        </li>
+        
+        <li *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/funcionario"> Página Inicial </a>
+        </li>
+        
+        <li *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/funcionario/manutencaoFuncionarios"> Manutenção de Funcionários </a>
+        </li>
+
+        <li *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/funcionario/manutencaoRoupas"> Manutenção Roupas </a>
+        </li>
+
+        <li *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/funcionario/visualizacao"> Visualizar Pedidos </a>
+        </li>
+
+        <li *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/funcionario/relatorios"> Relatórios </a>
+        </li>
+
+        <li class="nav-item" ngbDropdown>
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"> Menu </a>
+
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+            
+            <a *ngIf="usuarioLogado.perfil==='CLIENTE'" 
+                ngbDropdownItem href="#" routerLink="/cliente"
+                (click)="$event.preventDefault()"> Página Inicial </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='CLIENTE'" 
+                ngbDropdownItem href="#" routerLink="/cliente/pedido/novo"
+                (click)="$event.preventDefault()"> Novo Pedido </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='CLIENTE'" 
+                ngbDropdownItem href="#" routerLink="/cliente/consulta"
+                (click)="$event.preventDefault()"> Consultar Pedidos </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='CLIENTE'" 
+                ngbDropdownItem href="#" routerLink="/cliente/pedido/listagem"
+                (click)="$event.preventDefault()"> Listagem de Pedidos </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" 
+                ngbDropdownItem href="#" routerLink="/funcionario"
+                (click)="$event.preventDefault()"> Página Inicial </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" 
+                ngbDropdownItem href="#" routerLink="/funcionario/manutencaoFuncionarios"
+                (click)="$event.preventDefault()"> Manutenção de Funcionários </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" 
+                ngbDropdownItem href="#" routerLink="/funcionario/manutencaoRoupas"
+                (click)="$event.preventDefault()"> Manutenção Roupas </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" 
+                ngbDropdownItem href="#" routerLink="/funcionario/visualizacao"
+                (click)="$event.preventDefault()"> Visualizar Pedidos </a>
+            
+            <a *ngIf="usuarioLogado.perfil==='FUNCIONARIO'" 
+                ngbDropdownItem href="#" routerLink="/funcionario/relatorios"
+                (click)="$event.preventDefault()"> Relatórios </a>
+            
+          </div>
+        </li>
+      </ul>
+
+      <ul *ngIf="usuarioLogado" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()"> SAIR </a>
+        </li>
+
+        <li class="nav-item">
+          <p class="navbar-text mb-0 text-white">
+            <i class="fa fa-user"></i> {{ usuarioLogado.nome }}
+          </p>
+        </li>
+
+      </ul>
+    </nav>
+    </div>
+
+  <router-outlet></router-outlet>
+
+</div>
