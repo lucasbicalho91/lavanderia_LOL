@@ -6,10 +6,11 @@
                 <label for="statusFilter">Filtrar por Status:</label>
                 <select class="form-control" id="statusFilter" [(ngModel)]="statusSelecionado">
                     <option value="">Todos</option>
-                    <option value="Em Processo">Em Processo</option>
+                    <option value="Em Aberto">Em Aberto</option>
+                    <option value="Recolhido">Recolhido</option>
                     <option value="Aguardando Pagamento">Aguardando Pagamento</option>
-                    <option value="Concluído">Concluído</option>
-                    <option value="Cancelado">Cancelado</option>
+                    <option value="Pago">Pago</option>
+                    <option value="Finalizado">Finalizado</option>
                 </select>
             </div>
             <table class="table table-bordered">
@@ -28,18 +29,18 @@
                         <td> {{pedido.idPedido}} </td>
                         <td> {{pedido.statusPedido}} </td>
                         <td> R${{pedido.valor}} </td>
-                        <td> {{pedido.dataPedido}}</td>
+                        <td> {{pedido.dataPedido | dateFormat: 'dd-MM-yyyy HH:mm'}} </td>
+                        
                         <td>
-
                             <button type="button" class="btn btn-xs btn-primary"
-                                *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
+                                *ngIf="pedido.statusPedido === 'Aguardando Pagamento'"
                                 (click)="abrirModalPedido(pedido)">
                                 <i class="fa fa-check" aria-hidden="true"></i>
                                 Pagar
                             </button>
 
-                            <button type="button" class="btn btn-xs btn-danger botao-cancelar"
-                                *ngIf="pedido.statusPedido !== 'Cancelado' && pedido.statusPedido !== 'Concluído'"
+                            <button type="button" class="btn btn-xs btn-danger"
+                                *ngIf="pedido.statusPedido === 'Em Aberto'"
                                 (click)="abrirModalCancelar(pedido)">
                                 <i class="fa fa-times" aria-hidden="true"></i>
                                 Cancelar

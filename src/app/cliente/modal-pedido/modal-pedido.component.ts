@@ -15,7 +15,7 @@ export class ModalPedidoComponent {
 
 pagar($event: any, pedido: Pedido): void {
     $event.preventDefault();
-      pedido.statusPedido = "Concluído";
+      pedido.statusPedido = "Pago";
       this.activeModal.close();
   }
   
