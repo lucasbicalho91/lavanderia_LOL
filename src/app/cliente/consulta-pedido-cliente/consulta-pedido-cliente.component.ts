@@ -17,8 +17,8 @@ roupas: RoupasPedido[] = [
 ];
 
 pedidos: Pedido[] = [
-  {idPedido: 1, dataPedido: '12/03/2023', dataEstimativa: '16/03/2023', dataColeta: '12/03/2023', dataEntrega: '15/03/2023', valor: 50.00, statusPedido: 'Finalizado'},
-  {idPedido: 2, dataPedido: '10/11/2023', dataEstimativa: '21/11/2023', dataColeta: '11/11/2023', dataEntrega: '', valor: 62.00, statusPedido: 'Em Andamento'}
+  {idPedido: 1, dataPedido: new Date('2023-11-10T17:00:00'), dataEstimativa: new Date('2023-11-15T17:00:00'), dataColeta: new Date('2023-11-12T17:00:00'), dataEntrega: new Date('2023-11-14T17:00:00'), valor: 50.00, statusPedido: 'Finalizado'},
+  {idPedido: 2, dataPedido: new Date('2023-11-12T17:00:00'), dataEstimativa: new Date('2023-11-20T17:00:00'), dataColeta: new Date('2023-11-13T17:00:00'), dataEntrega: new Date(''), valor: 62.00, statusPedido: 'Em Andamento'}
 ];
 
 roupa: RoupasPedido | undefined;
