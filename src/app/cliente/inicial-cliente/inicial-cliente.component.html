@@ -1,1 +1,28 @@
-<p>inicial-cliente works!</p>
+
+    <div class="container">
+        <div class="row">
+            <div class="container mt-4">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Número do Pedido</th>
+                            <th>Status do Pedido</th>
+                            <th>Data da Coleta</th>
+                            <th>Data de Entrega</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pedido of pedidos">
+                            <td>{{pedido.idPedido}}</td>
+                            <td>{{pedido.statusPedido}}</td>
+                            <td>{{pedido.dataColeta}}</td>
+                            <td>{{pedido.dataEntrega}}</td>
+                            <td>{{pedido.valor}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
