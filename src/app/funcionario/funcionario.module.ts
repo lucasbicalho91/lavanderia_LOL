@@ -8,6 +8,8 @@ import { VisualizacaoPedidosFuncionarioComponent } from './visualizacao-pedidos-
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DateFormatFuncionarioPipe } from '../shared/pipes/date-format-funcionario.pipe';
+import { ModalRecolhimentoComponent } from './modal-recolhimento/modal-recolhimento.component';
+import { ModalConfirmadoComponent } from './modal-confirmado/modal-confirmado.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DateFormatFuncionarioPipe } from '../shared/pipes/date-format-funcionar
     ManutencaoRoupasFuncionarioComponent,
     RelatorioFuncionarioComponent,
     VisualizacaoPedidosFuncionarioComponent,
-    DateFormatFuncionarioPipe
+    DateFormatFuncionarioPipe,
+    ModalRecolhimentoComponent,
+    ModalConfirmadoComponent
   ],
   imports: [
     CommonModule,

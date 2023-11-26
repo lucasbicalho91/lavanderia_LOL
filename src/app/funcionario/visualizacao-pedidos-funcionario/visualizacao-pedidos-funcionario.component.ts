@@ -22,10 +22,15 @@ export class VisualizacaoPedidosFuncionarioComponent {
     { idPedido: 5, dataPedido: new Date('2023-11-01T09:30:00'), dataEstimativa: new Date('2023-11-01T10:45:00'), dataColeta: new Date('2023-11-01T12:00:00'), 
       dataEntrega: new Date('2023-11-01T13:15:00'), valor: 60.89, statusPedido: 'Pago' },
     { idPedido: 6, dataPedido: new Date('2023-11-15T16:45:00'), dataEstimativa: new Date('2023-11-15T18:00:00'), dataColeta: new Date('2023-11-15T19:15:00'), 
-      dataEntrega: new Date('2023-11-15T20:30:00'), valor: 10.80, statusPedido: 'Finalizado' }
+      dataEntrega: new Date('2023-11-15T20:30:00'), valor: 10.80, statusPedido: 'Finalizado' },
+    { idPedido: 7, dataPedido: new Date('2023-08-15T14:30:00'), dataEstimativa: new Date('2023-09-15T15:45:00'), dataColeta: new Date('2023-09-15T16:30:00'), 
+      dataEntrega: new Date('2023-09-15T18:00:00'), valor: 60.00, statusPedido: 'Em Aberto' },
+    { idPedido: 8, dataPedido: new Date('2023-09-22T14:30:00'), dataEstimativa: new Date('2023-09-15T15:45:00'), dataColeta: new Date('2023-09-15T16:30:00'), 
+      dataEntrega: new Date('2023-09-15T18:00:00'), valor: 80.00, statusPedido: 'Em Aberto' },
+    { idPedido: 9, dataPedido: new Date('2023-11-25T14:30:00'), dataEstimativa: new Date('2023-09-15T15:45:00'), dataColeta: new Date('2023-09-15T16:30:00'), 
+      dataEntrega: new Date('2023-09-15T18:00:00'), valor: 20.00, statusPedido: 'Em Aberto' },
   ];
   
-
   constructor () { }
 
   listarPedidos(): Pedido[] {
@@ -93,6 +98,16 @@ confirmarLavagem(pedido: any): void {
 
 finalizarPedido(pedido: any): void {
   pedido.statusPedido = "Finalizado";
+}
+
+ordenarPedidos(): Pedido[] {
+  const pedidosOrdenados = this.listarPedidos().slice();
+  pedidosOrdenados.sort((a, b) => {
+    const dataA = a.dataPedido ? new Date(a.dataPedido).getTime() : 0;
+    const dataB = b.dataPedido ? new Date(b.dataPedido).getTime() : 0;
+    return dataA - dataB;
+  });
+  return pedidosOrdenados;
 }
 
 }
