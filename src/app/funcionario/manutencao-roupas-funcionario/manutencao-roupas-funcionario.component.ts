@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Roupa } from 'src/app/shared';
 
+
+import { RoupaService } from 'src/app/services/roupa.service';
 
 @Component({
   selector: 'app-manutencao-roupas-funcionario',
   templateUrl: './manutencao-roupas-funcionario.component.html',
   styleUrls: ['./manutencao-roupas-funcionario.component.css']
 })
-export class ManutencaoRoupasFuncionarioComponent {
-  roupas: Roupa[] = [
-    { idRoupa: 1, nomPecaRoupa: 'Camiseta', precoRoupa: 20.00, prazoLavagemRoupa: 2, habilitada: false },
-    { idRoupa: 2, nomPecaRoupa: 'Calça Jeans', precoRoupa: 50.00, prazoLavagemRoupa: 3, habilitada: false },
-  ];
+export class ManutencaoRoupasFuncionarioComponent implements OnInit {
+  roupa! : Roupa;
+  roupas: Roupa[] = [];
 
-  linhaSelecionada: number | null = null;
+  constructor(
+    private roupaService: RoupaService) { }
+
+    ngOnInit(): void {
+      this.roupas = this.listarTodos();
+      }
+
+  linhaSelecionada: any = null;
 
   adicionarNovaLinha(): void {
     const novaRoupa: Roupa = {
@@ -24,7 +31,7 @@ export class ManutencaoRoupasFuncionarioComponent {
       habilitada: true,
     };
     this.roupas.push(novaRoupa);
-    this.linhaSelecionada = 0;
+    this.linhaSelecionada = null;
   }
 
   selecionarLinha(index: Roupa): void {
@@ -32,13 +39,21 @@ export class ManutencaoRoupasFuncionarioComponent {
     index.habilitada = true;
   }
 
-  excluirLinha(obj: Roupa, index: number): void {
-    if (obj !== null) {
-      this.roupas.splice(index, 1);
-    }
+  excluirLinha ($event: any, roupa: Roupa): void {
+    $event.preventDefault();
+      this.roupaService.remover(roupa.idRoupa!);
+      this.roupas = this.listarTodos();
   }
 
   salvarEdicao(obj: Roupa): void {
+    this.roupaService.inserir(obj);
     this.linhaSelecionada = null;
+    this.listarTodos();
+    console.log(localStorage.getItem('roupas'));
+
+  }
+
+  listarTodos(): Roupa[] {
+    return this.roupaService.listarTodos();
   }
 }

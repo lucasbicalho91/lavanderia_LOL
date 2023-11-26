@@ -19,17 +19,17 @@
         <tbody>
           <tr *ngFor="let Roupa of roupas; let i = index">
             <td>
-              <input [(ngModel)]="Roupa.nomPecaRoupa" [disabled]="!Roupa.habilitada" />
+              <input [(ngModel)]="Roupa.nomPecaRoupa" name="nome" [disabled]="!Roupa.habilitada" />
             </td>
             <td>
-              <input [(ngModel)]="Roupa.precoRoupa" [disabled]="!Roupa.habilitada" />
+              <input [(ngModel)]="Roupa.precoRoupa" name="preco" [disabled]="!Roupa.habilitada" />
             </td>
             <td>
-              <input [(ngModel)]="Roupa.prazoLavagemRoupa" [disabled]="!Roupa.habilitada" />
+              <input [(ngModel)]="Roupa.prazoLavagemRoupa" name="prazo" [disabled]="!Roupa.habilitada" />
             </td>
             <td>
               <button class="btn btn-warning mr-2" (click)="selecionarLinha(Roupa)">Editar</button>
-              <button class="btn btn-danger mr-2" (click)="excluirLinha(Roupa, i)">Excluir</button>
+              <button class="btn btn-danger mr-2" (click)="excluirLinha($event, Roupa)">Excluir</button>
               <button class="btn btn-success" (click)="salvarEdicao(Roupa)">Salvar</button>
             </td>
           </tr>
