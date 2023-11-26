@@ -12,12 +12,12 @@
                             <th>Valor</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let pedido of pedidos">
-                            <td>{{pedido.idPedido}}</td>
+                    <tbody *ngFor="let pedido of pedidos">
+                        <tr *ngIf="pedido.statusPedido === 'Em Aberto'">
+                            <td>00{{pedido.idPedido}}</td>
                             <td>{{pedido.statusPedido}}</td>
-                            <td>{{pedido.dataColeta}}</td>
-                            <td>{{pedido.dataEntrega}}</td>
+                            <td *ngIf="pedido.dataColeta !== undefined">{{pedido.dataColeta | dateFormatClient: 'dd-MM-yyyy HH:mm'}}</td>
+                            <td *ngIf="pedido.dataEntrega !== undefined">{{pedido.dataEntrega | dateFormatClient: 'dd-MM-yyyy HH:mm'}}</td>
                             <td>{{pedido.valor}}</td>
                         </tr>
                         

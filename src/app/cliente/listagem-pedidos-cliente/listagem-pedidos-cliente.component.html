@@ -25,7 +25,7 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let pedido of listarPedidos() | statusFilter: statusSelecionado">
+                    <tr *ngFor="let pedido of ordenarPedidos() | statusFilter: statusSelecionado">
                         <td> {{pedido.idPedido}} </td>
                         <td> {{pedido.statusPedido}} </td>
                         <td> R${{pedido.valor}} </td>
