@@ -22,7 +22,7 @@ export class DateUtil {
   ];
 
   static Format(value: Date, type: string) {
-    const year = `${value.getFullYear()}`;
+    const year = `${new Date(value.getFullYear())}`;
     const month = DateUtil.Lpad(value.getMonth() + 1);
     const day = DateUtil.Lpad(value.getDate());
     const [hour, minute, second] = value.toTimeString().split(' ')[0].split(':');
@@ -48,3 +48,4 @@ export class DateUtil {
   }
 
 }
+

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pedido } from 'src/app/shared';
+import { PedidoService } from 'src/app/services/pedido.service';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,12 +12,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalPedidoComponent {
   @Input() pedido!: Pedido;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal,
+    private pedidoService: PedidoService) {}
 
-pagar($event: any, pedido: Pedido): void {
-    $event.preventDefault();
+    atualizarPagamento(pedido: Pedido): void {
       pedido.statusPedido = "Pago";
+      this.pedidoService.atualizar(this.pedido);
       this.activeModal.close();
   }
-  
-}
+  }

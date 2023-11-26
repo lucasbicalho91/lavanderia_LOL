@@ -12,13 +12,13 @@
                             <th>Valor</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let pedido of pedidos">
+                    <tbody *ngFor="let pedido of listarPedidos()">
                         <tr *ngIf="pedido.statusPedido === 'Em Aberto'">
-                            <td>00{{pedido.idPedido}}</td>
-                            <td>{{pedido.statusPedido}}</td>
-                            <td *ngIf="pedido.dataColeta !== undefined">{{pedido.dataColeta | dateFormatClient: 'dd-MM-yyyy HH:mm'}}</td>
-                            <td *ngIf="pedido.dataEntrega !== undefined">{{pedido.dataEntrega | dateFormatClient: 'dd-MM-yyyy HH:mm'}}</td>
-                            <td>{{pedido.valor}}</td>
+                            <td>00{{ pedido.idPedido }}</td>
+                            <td>{{ pedido.statusPedido }}</td>
+                            <td *ngIf="pedido.dataColeta !== undefined">{{ formatarData(pedido.dataColeta) }}</td>
+                            <td *ngIf="pedido.dataEntrega !== undefined">{{ formatarData(pedido.dataEntrega) }}</td>
+                            <td>{{ pedido.valor }}</td>
                         </tr>
                         
                     </tbody>

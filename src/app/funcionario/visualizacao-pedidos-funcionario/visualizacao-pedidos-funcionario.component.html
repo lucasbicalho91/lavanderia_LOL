@@ -27,7 +27,7 @@
           <tr *ngFor="let pedido of ordenarPedidos()">
             <td> 00{{pedido.idPedido}} </td>
             <td [ngClass]="getStatusClass(pedido.statusPedido)"> {{pedido.statusPedido}} </td>
-            <td *ngIf="pedido.dataPedido !== undefined"> {{ pedido.dataPedido | dateFormatFunc: 'dd-MM-yyyy HH:mm:ss'}}</td>
+            <td *ngIf="pedido.dataPedido !== undefined"> {{ formatarData(pedido.dataPedido) }}</td>
             <td>  
               <button *ngIf="mostrarBotao(pedido.statusPedido)"
               class="btn btn-primary"

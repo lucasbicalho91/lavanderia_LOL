@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Roupa } from 'src/app/shared';
 
-
 import { RoupaService } from 'src/app/services/roupa.service';
 
 @Component({
