@@ -34,7 +34,6 @@ export class ListagemPedidosClienteComponent {
       dataEntrega: new Date('2023-11-25T14:30:00'), valor: 20.00, statusPedido: 'Em Aberto' },
   ];
   
-
   constructor (private modalService: NgbModal) { }
 
   listarPedidos(): Pedido[] {
