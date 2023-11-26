@@ -30,7 +30,8 @@
             <td>
               <button class="btn btn-warning mr-2" (click)="selecionarLinha(Roupa)">Editar</button>
               <button class="btn btn-danger mr-2" (click)="excluirLinha($event, Roupa)">Excluir</button>
-              <button class="btn btn-success" (click)="salvarEdicao(Roupa)">Salvar</button>
+              <button *ngIf="Roupa.idRoupa === 0" class="btn btn-info" (click)="inserir(Roupa)">Salvar</button>
+              <button *ngIf="Roupa.idRoupa !== 0" class="btn btn-success" (click)="salvarEdicao(Roupa)">Salvar</button>
             </td>
           </tr>
         </tbody>

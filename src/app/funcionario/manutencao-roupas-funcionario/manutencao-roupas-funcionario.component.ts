@@ -45,12 +45,16 @@ export class ManutencaoRoupasFuncionarioComponent implements OnInit {
       this.roupas = this.listarTodos();
   }
 
-  salvarEdicao(obj: Roupa): void {
+  inserir(obj: Roupa): void {
     this.roupaService.inserir(obj);
     this.linhaSelecionada = null;
     this.listarTodos();
-    console.log(localStorage.getItem('roupas'));
+  }
 
+  salvarEdicao(obj: Roupa): void {
+    this.linhaSelecionada = null;
+    this.roupaService.atualizar(obj);
+    this.listarTodos();
   }
 
   listarTodos(): Roupa[] {

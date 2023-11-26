@@ -41,6 +41,16 @@ export class RoupaService {
     return estados.find(roupa => roupa.idRoupa === id);
   }
 
+  atualizar(roupa: Roupa): void {
+    const roupas: Roupa[] = this.listarTodos();
+    roupas.forEach( (obj, index, objs) => {
+      if (roupa.idRoupa === obj.idRoupa) {
+        objs[index] = roupa;
+      }
+    });
+    localStorage[LS_CHAVE] = JSON.stringify(roupas);
+  }
+
   remover(id: number): void {
     let roupas: Roupa[] = this.listarTodos();
     roupas = roupas.filter(roupa => roupa.idRoupa !== id);
