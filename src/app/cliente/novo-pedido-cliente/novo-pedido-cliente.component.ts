@@ -25,11 +25,15 @@ export class NovoPedidoClienteComponent implements OnInit {
   adicionarItem(): void {
     const roupasPedido = this.pedido?.roupas ?? [];
     let valorPedido = this.pedido?.valor ?? 0;
-
+    const pedidos = this.pedidoService.listarTodos();
+    const maxId = Math.max(...pedidos.map(pedido => pedido.idPedido || 0));
+    const proximoId = maxId + 1;
     if (this.roupaSelecionada && this.roupaSelecionada.precoRoupa !== undefined) {
       roupasPedido.push({
+        idPedido: proximoId,
+        idRoupa: this.roupaSelecionada.idRoupa,
         nomeRoupa: this.roupaSelecionada.nomPecaRoupa,
-        valorLavagemPeca: this.roupaSelecionada.precoRoupa,
+        valorLavagemPeca: Number(this.roupaSelecionada.precoRoupa),
       });
 
       valorPedido += Number(this.roupaSelecionada.precoRoupa)
