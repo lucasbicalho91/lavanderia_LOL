@@ -19,5 +19,5 @@ export class ModalPedidoComponent {
       pedido.statusPedido = "Pago";
       this.pedidoService.atualizar(this.pedido);
       this.activeModal.close();
-  }
+    }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { Pedido } from 'src/app/shared';
 
@@ -9,8 +9,8 @@ import { Pedido } from 'src/app/shared';
 
 })
 export class VisualizacaoPedidosFuncionarioComponent {
-
   statusSelecionado: string = '';
+  pedido!:Pedido;
   
   constructor (
     private pedidoService: PedidoService) { }
@@ -70,16 +70,19 @@ efetuarAcao(nomeFuncao: string, pedido: any): void {
   }
 }
 
-confirmarRecolhimento(pedido: any): void {
+confirmarRecolhimento(pedido: Pedido): void {
   pedido.statusPedido = "Recolhido";
+  this.pedidoService.atualizar(pedido);
 }
 
-confirmarLavagem(pedido: any): void {
+confirmarLavagem(pedido: Pedido): void {
   pedido.statusPedido = "Aguardando Pagamento";
+  this.pedidoService.atualizar(pedido);
 }
 
-finalizarPedido(pedido: any): void {
+finalizarPedido(pedido: Pedido): void {
   pedido.statusPedido = "Finalizado";
+  this.pedidoService.atualizar(pedido);
 }
 
 ordenarPedidos(): Pedido[] {
