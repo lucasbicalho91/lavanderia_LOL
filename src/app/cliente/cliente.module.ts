@@ -13,6 +13,7 @@ import { LavanderiaModule } from '../lavanderia';
 import { RouterModule } from '@angular/router';
 import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
 import { DateFormatClientePipe } from '../shared/pipes/date-format-cliente.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DateFormatClientePipe } from '../shared/pipes/date-format-cliente.pipe'
     LavanderiaModule,
     RouterModule,
     FormsModule,
+    NgSelectModule
   ]
 })
 export class ClienteModule { }
