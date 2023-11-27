@@ -1,25 +1,35 @@
 <h1>Novo Pedido</h1>
 
 <div class="well">
-  <form #formPedido="ngForm">
+  <form #formPedido="ngForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
       <label for="roupa"> Selecione uma roupa:</label>
     
       <div *ngFor="let roupa of roupas; let i = index" class="margem-esquerda">
         <input type="radio" class="form-check-input m" name="roupa" [id]="'roupa' + i"
-               [(ngModel)]="pedido.roupas" [value]="roupa.nomPecaRoupa">
+               [(ngModel)]="roupaSelecionada" [value]="roupa">
         <label [for]="'roupa' + i">{{ roupa.nomPecaRoupa }} - {{ roupa.precoRoupa | currency:'BRL':'symbol':'1.2-2'}} </label><br/>
       </div>
     </div>
 
     <div class="form-group">
-      <button type="button" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" (click)="adicionarItem()">
         <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
       </button>
-      <a class="btn btn-secondary" [routerLink]="['/cidades']">
+      <a class="btn btn-secondary" [routerLink]="['/cliente/inicial']">
         <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
       </a>
+    </div>
+
+    <div *ngIf="(pedido.roupas ?? []).length > 0">
+      <h2>Itens do Pedido:</h2>
+      <ul>
+        <li *ngFor="let item of pedido.roupas">
+          {{ item.nomeRoupa }} - {{ item.valorLavagemPeca | currency:'BRL':'symbol':'1.2-2'}}
+        </li>
+      </ul>
+      <p>Total: {{ pedido.valor | currency:'BRL':'symbol':'1.2-2'}}</p>
     </div>
 
   </form>
