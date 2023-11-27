@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { RoupaService } from 'src/app/services/roupa.service';
-import { Pedido, Roupa } from 'src/app/shared';
+import { Pedido, Roupa, RoupasPedido } from 'src/app/shared';
 
 @Component({
   selector: 'app-novo-pedido-cliente',
@@ -11,7 +11,7 @@ import { Pedido, Roupa } from 'src/app/shared';
 })
 export class NovoPedidoClienteComponent implements OnInit {
   @ViewChild('formPedido') formPedido! : NgForm;
-  pedido: Pedido = new Pedido();
+  pedido!: Pedido;
   roupas: Roupa[] = [];
 
   constructor(
@@ -21,7 +21,7 @@ export class NovoPedidoClienteComponent implements OnInit {
   ngOnInit(): void {
     // Cris uma instância vazia, para não dar erro de referência
     this.pedido = new Pedido();
+    this.pedido.roupas = [];
     this.roupas = this.roupaService.listarTodos();
     }
-
 }

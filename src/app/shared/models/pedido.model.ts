@@ -6,7 +6,8 @@ export class Pedido {
     public dataColeta?: Date,
     public dataEntrega?: Date,
     public valor?: number,
-    public statusPedido?: string) {}
+    public statusPedido?: string,
+    public roupas?: RoupasPedido[]) {}
 }
 
 export class RoupasPedido {
