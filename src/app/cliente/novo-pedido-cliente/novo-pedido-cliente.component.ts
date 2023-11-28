@@ -45,6 +45,10 @@ export class NovoPedidoClienteComponent implements OnInit {
     }
   }
 
+  aceitarOrcamento(): void {
+    
+  }
+
   onSubmit(): void {
     // Adicionar lógica para enviar o pedido para o serviço ou onde for necessário
     console.log('Pedido submetido:', this.pedido);

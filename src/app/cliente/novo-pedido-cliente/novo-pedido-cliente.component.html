@@ -30,6 +30,9 @@
         </li>
       </ul>
       <p>Total: {{ pedido.valor | currency:'BRL':'symbol':'1.2-2'}}</p>
+      <button type="button" class="btn btn-success" (click)="aceitarOrcamento()">
+        Aceitar
+      </button>
     </div>
 
   </form>
