@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 import { PedidoService } from 'src/app/services/pedido.service';
 import { RoupaService } from 'src/app/services/roupa.service';
 import { Pedido, Roupa } from 'src/app/shared';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAceitarComponent } from '../modal-aceitar/modal-aceitar.component';
 
 @Component({
   selector: 'app-novo-pedido-cliente',
@@ -15,7 +22,11 @@ export class NovoPedidoClienteComponent implements OnInit {
 
   constructor(
     private pedidoService: PedidoService,
-    private roupaService: RoupaService
+    private roupaService: RoupaService,
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -25,13 +36,8 @@ export class NovoPedidoClienteComponent implements OnInit {
   adicionarItem(): void {
     const roupasPedido = this.pedido?.roupas ?? [];
     let valorPedido = this.pedido?.valor ?? 0;
-    const pedidos = this.pedidoService.listarTodos();
-    const maxId = Math.max(...pedidos.map(pedido => pedido.idPedido || 0));
-    const proximoId = maxId + 1;
     if (this.roupaSelecionada && this.roupaSelecionada.precoRoupa !== undefined) {
       roupasPedido.push({
-        idPedido: proximoId,
-        idRoupa: this.roupaSelecionada.idRoupa,
         nomeRoupa: this.roupaSelecionada.nomPecaRoupa,
         valorLavagemPeca: Number(this.roupaSelecionada.precoRoupa),
       });
@@ -45,14 +51,13 @@ export class NovoPedidoClienteComponent implements OnInit {
     }
   }
 
-  aceitarOrcamento(): void {
-    
+  abrirModalAceitar(pedido: Pedido): void {
+    const modalRef = this.modalService.open(ModalAceitarComponent);
+    modalRef.componentInstance.pedido = pedido;
   }
 
-  onSubmit(): void {
-    // Adicionar lógica para enviar o pedido para o serviço ou onde for necessário
-    console.log('Pedido submetido:', this.pedido);
-    //this.pedidoService.enviarPedido(this.pedido);
+  recusarOrcamento(): void {
+    location.reload();
   }
 
 }

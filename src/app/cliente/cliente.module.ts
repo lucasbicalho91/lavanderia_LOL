@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
 import { DateFormatClientePipe } from '../shared/pipes/date-format-cliente.pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ModalAceitarComponent } from './modal-aceitar/modal-aceitar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ModalPedidoComponent,
     ModalCancelarComponent,
     StatusFilterPipe,
-    DateFormatClientePipe
+    DateFormatClientePipe,
+    ModalAceitarComponent
   ],
   imports: [
     CommonModule,
