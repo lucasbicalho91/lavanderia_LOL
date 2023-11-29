@@ -57,8 +57,8 @@ export class NovoPedidoClienteComponent implements OnInit {
     modalRef.componentInstance.pedido = pedido;
   }
 
-  recusarOrcamento(): void {
-    location.reload();
+  recusarOrcamento(pedido: Pedido): void {
+    this.pedidoService.recusarOrcamento(pedido);
   }
 
 }

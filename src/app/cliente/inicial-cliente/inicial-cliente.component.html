@@ -20,9 +20,14 @@
                             <td *ngIf="pedido.dataEntrega !== undefined">{{ formatarData(pedido.dataEntrega) }}</td>
                             <td>{{ pedido.valor }}</td>
                         </tr>
-                        
                     </tbody>
                 </table>
+
+                
+                <a class="btn btn-primary" [routerLink]="['/cliente/pedido/novo']">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Novo Pedido
+                </a>
+
             </div>
         </div>
     </div>

@@ -90,4 +90,15 @@ export class PedidoService {
       return 0;
     }
   }
+
+  recusarOrcamento (pedido: Pedido) {
+    const pedidos = this.listarTodos();
+    const novoId = Math.max(...pedidos.map(pedido => (pedido.idPedido || 0)), 0) + 1;
+    pedido.idPedido = novoId;
+    pedido.dataPedido = new Date();
+    pedido.statusPedido = 'Rejeitado';
+    pedidos.push(pedido);
+    localStorage[LS_CHAVE] = JSON.stringify(pedidos);
+    console.log(pedido);
+  }
 }
