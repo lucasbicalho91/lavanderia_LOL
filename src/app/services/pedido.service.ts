@@ -79,7 +79,7 @@ export class PedidoService {
 
   adicionarHoras(data: Date, horas: number) {
     const novaData = new Date(data);
-    novaData.setDate(novaData.getDate() + horas);
+    novaData.setHours(novaData.getDate() + horas);
     return novaData;
   }
 

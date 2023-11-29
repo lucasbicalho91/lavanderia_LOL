@@ -15,6 +15,7 @@ import { StatusFilterPipe } from '../shared/pipes/meu-pipe.pipe';
 import { DateFormatClientePipe } from '../shared/pipes/date-format-cliente.pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalAceitarComponent } from './modal-aceitar/modal-aceitar.component';
+import { ModalDadosPedidoComponent } from './modal-dados-pedido/modal-dados-pedido.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModalAceitarComponent } from './modal-aceitar/modal-aceitar.component';
     ModalCancelarComponent,
     StatusFilterPipe,
     DateFormatClientePipe,
-    ModalAceitarComponent
+    ModalAceitarComponent,
+    ModalDadosPedidoComponent
   ],
   imports: [
     CommonModule,

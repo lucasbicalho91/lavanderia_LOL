@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 import { Pedido } from 'src/app/shared';
 import { PedidoService } from 'src/app/services/pedido.service';
 
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDadosPedidoComponent } from '../modal-dados-pedido/modal-dados-pedido.component';
 
 @Component({
   selector: 'app-modal-aceitar',
@@ -13,11 +14,19 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalAceitarComponent {
   @Input() pedido!: Pedido;
 
-  constructor(public activeModal: NgbActiveModal,
-    private pedidoService: PedidoService) {}
+  constructor(
+        public activeModal: NgbActiveModal,
+        private modalService: NgbModal,
+        private pedidoService: PedidoService) {}
 
-    realizarPedido(obj: Pedido): void {
-      this.pedidoService.inserir(obj);
+    realizarPedido(pedido: Pedido): void {
+      this.pedidoService.inserir(pedido);
       this.activeModal.close();
+      this.abrirModalDadosPedido(this.pedido);
+    }
+
+    abrirModalDadosPedido(pedido: Pedido) {
+      const modalRef = this.modalService.open(ModalDadosPedidoComponent);
+      modalRef.componentInstance.pedido = pedido;
     }
 }
