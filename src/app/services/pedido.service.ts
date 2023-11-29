@@ -12,8 +12,8 @@ export class PedidoService {
   constructor() { }
 
   listarTodos(): Pedido[] {
-    const PedidosLocalStorage = localStorage[LS_CHAVE];
-    const PedidosCadastradas: Pedido[] = [
+    const pedidosLocalStorage = localStorage[LS_CHAVE];
+    const pedidosCadastrados: Pedido[] = [
       { idPedido: 1, dataPedido: new Date('2023-09-15T14:30:00'), dataEstimativa: new Date('2023-09-15T14:30:00'), dataColeta: new Date('2023-09-15T14:30:00'), 
       dataEntrega: new Date('2023-09-15T14:30:00'), valor: 30.00, statusPedido: 'Em Aberto' },
     { idPedido: 2, dataPedido: new Date('2023-09-20T10:00:00'), dataEstimativa: new Date('2023-09-20T10:00:00'), dataColeta: new Date('2023-09-20T10:00:00'), 
@@ -33,27 +33,26 @@ export class PedidoService {
     { idPedido: 9, dataPedido: new Date('2023-11-25T14:30:00'), dataEstimativa: new Date('2023-11-25T14:30:00'), dataColeta: new Date('2023-11-25T14:30:00'), 
       dataEntrega: new Date('2023-11-25T14:30:00'), valor: 20.00, statusPedido: 'Em Aberto' },
     ];
-    let Pedidos = PedidosLocalStorage ? JSON.parse(PedidosLocalStorage) : [];
-    const PedidosCadastradasAdicionadas = Pedidos.some(
-      (cadastrado: Pedido) => PedidosCadastradas.some((c) => c.idPedido === cadastrado.idPedido));
-      if (!PedidosCadastradasAdicionadas) {
-    Pedidos = Pedidos.concat(PedidosCadastradas); 
+    let pedidos = pedidosLocalStorage ? JSON.parse(pedidosLocalStorage) : [];
+    const pedidosCadastradosAdicionados = pedidos.some(
+      (cadastrado: Pedido) => pedidosCadastrados.some((c) => c.idPedido === cadastrado.idPedido));
+      if (!pedidosCadastradosAdicionados) {
+    pedidos = pedidos.concat(pedidosCadastrados); 
       }
-  return Pedidos;
+  return pedidos;
   }
 
-  inserir(Pedido: Pedido): void {
-    const Pedidos = this.listarTodos();
-    const novoId = Math.max(...Pedidos.map(Pedido => (Pedido.idPedido || 0)), 0) + 1;
-    Pedido.idPedido = novoId;
-    Pedidos.push(Pedido);
-    localStorage[LS_CHAVE] = JSON.stringify(Pedidos);
-  }
-
-  buscarPorId (id: number): Pedido | undefined {
-    //Obtém a lista completa de estados
-    const estados: Pedido[] = this.listarTodos();
-    return estados.find(Pedido => Pedido.idPedido === id);
+  inserir(pedido: Pedido): void {
+    const pedidos = this.listarTodos();
+    const novoId = Math.max(...pedidos.map(pedido => (pedido.idPedido || 0)), 0) + 1;
+    pedido.idPedido = novoId;
+    pedido.dataPedido = new Date();
+    pedido.dataColeta = this.adicionarHoras(new Date(), 2);
+    pedido.dataEntrega = this.adicionarDias(new Date(), this.encontrarMaior(pedido));
+    pedido.dataEstimativa = pedido.dataEntrega;
+    pedido.statusPedido = 'Em Aberto';
+    pedidos.push(pedido);
+    localStorage[LS_CHAVE] = JSON.stringify(pedidos);
   }
 
   atualizar(pedido: Pedido): void {
@@ -65,10 +64,30 @@ export class PedidoService {
     });
     localStorage[LS_CHAVE] = JSON.stringify(pedidos);
   }
-  
+
   remover(id: number): void {
-    let Pedidos: Pedido[] = this.listarTodos();
-    Pedidos = Pedidos.filter(Pedido => Pedido.idPedido !== id);
-    localStorage[LS_CHAVE] = JSON.stringify(Pedidos);
+    let pedidos: Pedido[] = this.listarTodos();
+    pedidos = pedidos.filter(pedido => pedido.idPedido !== id);
+    localStorage[LS_CHAVE] = JSON.stringify(pedidos);
+  }
+
+  adicionarDias(data: Date, dias: number) {
+    const novaData = new Date(data);
+    novaData.setDate(novaData.getDate() + dias);
+    return novaData;
+  }
+
+  adicionarHoras(data: Date, horas: number) {
+    const novaData = new Date(data);
+    novaData.setDate(novaData.getDate() + horas);
+    return novaData;
+  }
+
+  encontrarMaior(pedido: Pedido): number {
+    if (pedido.roupas !== undefined) {
+    return pedido.roupas.reduce((maxPrazo, roupa) => Math.max(maxPrazo, roupa.prazo || 0), 0);
+    } else {
+      return 0;
+    }
   }
 }

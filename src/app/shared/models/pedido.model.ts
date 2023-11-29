@@ -15,5 +15,6 @@ export class RoupasPedido {
     public idPedido?: number,
     public idRoupa?: number,
     public nomeRoupa?: string,
-    public valorLavagemPeca?: number) {}
+    public valorLavagemPeca?: number,
+    public prazo?: number,) {}
 }

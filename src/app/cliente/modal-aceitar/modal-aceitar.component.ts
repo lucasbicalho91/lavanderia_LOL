@@ -16,7 +16,8 @@ export class ModalAceitarComponent {
   constructor(public activeModal: NgbActiveModal,
     private pedidoService: PedidoService) {}
 
-    realizarPedido(pedido: Pedido): void {
+    realizarPedido(obj: Pedido): void {
+      this.pedidoService.inserir(obj);
+      this.activeModal.close();
     }
-
 }

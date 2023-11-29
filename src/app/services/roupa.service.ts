@@ -35,12 +35,6 @@ export class RoupaService {
     localStorage[LS_CHAVE] = JSON.stringify(roupas);
   }
 
-  buscarPorId (id: number): Roupa | undefined {
-    //Obtém a lista completa de estados
-    const estados: Roupa[] = this.listarTodos();
-    return estados.find(roupa => roupa.idRoupa === id);
-  }
-
   atualizar(roupa: Roupa): void {
     const roupas: Roupa[] = this.listarTodos();
     roupas.forEach( (obj, index, objs) => {

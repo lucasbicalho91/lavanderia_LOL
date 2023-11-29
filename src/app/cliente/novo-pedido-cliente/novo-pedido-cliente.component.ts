@@ -40,6 +40,7 @@ export class NovoPedidoClienteComponent implements OnInit {
       roupasPedido.push({
         nomeRoupa: this.roupaSelecionada.nomPecaRoupa,
         valorLavagemPeca: Number(this.roupaSelecionada.precoRoupa),
+        prazo: this.roupaSelecionada.prazoLavagemRoupa
       });
 
       valorPedido += Number(this.roupaSelecionada.precoRoupa)
